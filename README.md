@@ -1,2 +1,2 @@
-# StatFR
-Statistique du Canton de Fribourg
+# SStatFR
+Visualisation des statistiques fribourgeoises

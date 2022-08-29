@@ -1,0 +1,580 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en_GB">
+
+
+  <head>
+    <!--[if lte ie 8]><script type="text/javascript" src="/fanstatic/vendor/:version:2020-12-29T10:24:02/html5.min.js"></script><![endif]-->
+<link rel="stylesheet" type="text/css" href="/fanstatic/vendor/:version:2020-12-29T10:24:02/select2/select2.css" />
+<link rel="stylesheet" type="text/css" href="styles.css" />
+<link rel="stylesheet" type="text/css" href="/fanstatic/datagovsg-css/:version:2022-07-17T08:45:16.92/home/index.min.css" />
+<link rel="stylesheet" type="text/css" href="/fanstatic/datagovsg-resourceviews-css/:version:2021-02-09T18:05:59/snippets/infocard.css" />
+<link rel="stylesheet" type="text/css" href="/fanstatic/datagovsg-resourceviews-lib/:version:2021-02-09T17:59:43/plottable/plottable.css" />
+<link rel="stylesheet" type="text/css" href="/fanstatic/datagovsg-resourceviews-lib/:version:2021-02-09T17:59:43/datatables/css/dataTables.bootstrap.css" />
+
+
+    <title>
+      Bienvenue au portail statistique du canton de Fribourg
+
+    </title>
+
+
+    <meta charset="utf-8">
+    <meta name="generator" content="ckan ">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" user-scalable="no">
+    <meta name="description" content="Singapore&#39;s open data portal">
+    <meta name="theme-color" content="#113355">
+    <meta name="application-name" content="Data.gov.sg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@datagovsg">
+    <meta name="twitter:title" content="Data.gov.sg
+      ">
+    <meta name="twitter:description" content="Singapore&#39;s open data portal">
+    <meta name="twitter:url" content="https://data.gov.sg/">
+    <meta name="twitter:image:src" content="https://data.gov.sg/images/thumbnail.png">
+
+    <meta property="og:title" content="Data.gov.sg
+      " />
+    <meta property="og:description" content="Singapore&#39;s open data portal" />
+    <meta property="og:type" content="article" >
+    <meta property="og:url" content="https://data.gov.sg/" >
+    <meta property="og:image" content="https://data.gov.sg/images/thumbnail.png" >
+    <meta property="og:site_name" content="Data.gov.sg" >
+
+    <meta name="apple-mobile-web-app-title" content="Data.gov.sg">
+
+    <meta name="msapplication-TileColor" content="#113355">
+    <meta name="msapplication-TileImage" content="images/favicons/mstile-144x144.png">
+
+
+
+    <link rel="manifest" href="/manifest.json">
+
+    <link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#223344">
+
+    <link rel="shortcut icon" href="/images/favicon.ico" >
+    <link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/images/favicons/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/images/favicons/favicon-194x194.png" sizes="194x194">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/favicons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/favicons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/favicons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/favicons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/favicons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/favicons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/favicons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/favicons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon-180x180.png">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+      // Check if script is being ran from Iframe within data.gov.sg.
+      // This prevents dobule counting in Google Analytics tracking when page views are
+      // triggered twice due to embedding of iframe. This allows us to continue tracking
+      // users who are properly embedding the charts.
+      nodeName = window.frameElement ? window.frameElement.nodeName : 'default'
+      if (!(window.location.hostname.indexOf("data.gov.sg") > -1 && nodeName == "IFRAME")) {
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-64941664-1', 'auto');
+        ga('send', 'pageview');
+
+        window.onload = function () {
+          //track resource downloads
+          document.body.addEventListener('click', function(event) {
+            var element = findElWithClass(event);
+            if (element !== null && typeof element.className == "string"){
+              var classes = element.className.split(' ');
+              for (var event_type in ga_events) {
+                if (classes.indexOf(event_type) > -1 ) {
+                  var eventCategory = ga_events[event_type].eventCategory;
+                  var eventAction = ga_events[event_type].eventAction;
+                  var eventLabel = element.getAttribute("data-ga") + ": " + window.location.href;
+
+                  if (event_type == "ga-dataset-download") {
+                    eventLabel = element.getAttribute("data-ga");
+                  }
+                  ga('send', 'event', eventCategory, eventAction, eventLabel);
+                }
+              }
+            }
+          });
+        };
+      }
+
+      function findElWithClass(el) {
+        if (el.target) {
+          el = el.target;
+          while (el) {
+            if (typeof el.className == "string"){
+              var classes = el.className.split(' ');
+              for (var event_type in ga_events) {
+                if (classes.indexOf(event_type) > -1 ) {
+                  return el;
+                }
+              }
+            }
+            el = el.parentNode;
+          }
+          return null;
+        }
+      }
+    </script>
+
+
+
+  </head>
+
+  <body>
+
+
+
+    <nav class="site-nav">
+      <div class="container">
+        <a href="/">
+          <img class="site-logo"
+               src="images/logo.svg"
+               alt="Data.gov.sg"
+               title="www.fr.ch"/>
+        </a>
+        <a href="/" class="site-title">www.fr.ch</a>
+        <div class="flex-spacer"></div>
+
+      </div>
+    </nav>
+
+
+
+    <div class="collapse topic-collapse">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-xs-4 col-sm-fifth col-sm-ninth">
+            <a class="topic-link ga-nav-topic-selector"
+               data-ga=Economy
+               href="/group/economy">
+              <img class="hover-on" src=images/group_icons/active/economy.svg>
+              <img class="hover-off" src=images/group_icons/inactive/economy.svg>
+              <h5 class="topic-title"><small>Economie</small></h5>
+            </a>
+          </div>
+
+          <div class="col-xs-4 col-sm-fifth col-sm-ninth">
+            <a class="topic-link ga-nav-topic-selector"
+               data-ga=Education
+               href="/group/education">
+              <img class="hover-on" src=images/group_icons/active/education.svg>
+              <img class="hover-off" src=images/group_icons/inactive/education.svg>
+              <h5 class="topic-title"><small>Education</small></h5>
+            </a>
+          </div>
+
+          <div class="col-xs-4 col-sm-fifth col-sm-ninth">
+            <a class="topic-link ga-nav-topic-selector"
+               data-ga=Environment
+               href="/group/environment">
+              <img class="hover-on" src=images/group_icons/active/environment.svg>
+              <img class="hover-off" src=images/group_icons/inactive/environment.svg>
+              <h5 class="topic-title"><small>Environment</small></h5>
+            </a>
+          </div>
+
+          <div class="col-xs-4 col-sm-fifth col-sm-ninth">
+            <a class="topic-link ga-nav-topic-selector"
+               data-ga=Finance
+               href="/group/finance">
+              <img class="hover-on" src=images/group_icons/active/finance.svg>
+              <img class="hover-off" src=images/group_icons/inactive/finance.svg>
+              <h5 class="topic-title"><small>Finance</small></h5>
+            </a>
+          </div>
+
+          <div class="col-xs-4 col-sm-fifth col-sm-ninth">
+            <a class="topic-link ga-nav-topic-selector"
+               data-ga=Health
+               href="/group/health">
+              <img class="hover-on" src=images/group_icons/active/health.svg>
+              <img class="hover-off" src=images/group_icons/inactive/health.svg>
+              <h5 class="topic-title"><small>Health</small></h5>
+            </a>
+          </div>
+
+          <div class="col-xs-4 col-sm-fifth col-sm-ninth">
+            <a class="topic-link ga-nav-topic-selector"
+               data-ga=Infrastructure
+               href="/group/infrastructure">
+              <img class="hover-on" src=images/group_icons/active/infrastructure.svg>
+              <img class="hover-off" src=images/group_icons/inactive/infrastructure.svg>
+              <h5 class="topic-title"><small>Infrastructure</small></h5>
+            </a>
+          </div>
+
+          <div class="col-xs-4 col-sm-fifth col-sm-ninth">
+            <a class="topic-link ga-nav-topic-selector"
+               data-ga=Society
+               href="/group/society">
+              <img class="hover-on" src=images/group_icons/active/society.svg>
+              <img class="hover-off" src=images/group_icons/inactive/society.svg>
+              <h5 class="topic-title"><small>Population</small></h5>
+            </a>
+          </div>
+
+          <div class="col-xs-4 col-sm-fifth col-sm-ninth">
+            <a class="topic-link ga-nav-topic-selector"
+               data-ga=Technology
+               href="/group/technology">
+              <img class="hover-on" src=images/group_icons/active/technology.svg>
+              <img class="hover-off" src=images/group_icons/inactive/technology.svg>
+              <h5 class="topic-title"><small>Technology</small></h5>
+            </a>
+          </div>
+
+          <div class="col-xs-4 col-sm-fifth col-sm-ninth">
+            <a class="topic-link ga-nav-topic-selector"
+               data-ga=Transport
+               href="/group/transport">
+              <img class="hover-on" src=images/group_icons/active/transport.svg>
+              <img class="hover-off" src=images/group_icons/inactive/transport.svg>
+              <h5 class="topic-title"><small>Transport</small></h5>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+    <header class="site-header "
+            style="background-image: url(/images/header-home.jpg)">
+
+
+
+      <h1 class="headline container text-center">
+        Bienvenue au Portail statistique du canton de Fribourg
+      </h1>
+
+
+
+<div class="container">
+
+
+<div class="search-box-w-buttons">
+
+
+
+<form class="search-box " action="/search" method="get">
+
+
+
+
+
+  <input class="search-box-text ga-search-bar "
+         type="text"
+         name="q"
+         value=""
+         autocomplete="off"
+
+         placeholder="Rechercher les données publiques de Fribourg"
+         />
+
+
+  <button type="submit">
+    <img src="images/icons/Search.svg">
+  </button>
+
+</form>
+
+
+  <div class="search-buttons">
+
+
+
+    <a class="btn datagovsg-btn btn-right btn-orange ga-view-dataset-list" href=/search>
+      <img class="button-icon" src="images/icons/View.svg"/>
+      Voir tous les jeux de données
+    </a>
+
+
+  </div>
+</div>
+</div>
+
+    </header>
+
+
+
+
+
+    <main class="site-main">
+
+
+
+
+<div class="topics-section">
+  <div class="container">
+    <div class="topics-row">
+
+      <div class="topic-container ">
+        <a class="ga-topic-selector" data-ga=Economy href="Economie.html">
+        <div class="topic-link-container">
+          <div class="topic-link">
+            <img class="hover-on" src=images/group_icons/active/economy.svg>
+            <img class="hover-off" src=images/group_icons/inactive/economy.svg>
+            <h5 class="topic-title">Economie</h5>
+          </div>
+        </div>
+        </a>
+      </div>
+
+      <div class="topic-container ">
+        <a class="ga-topic-selector" data-ga=Education href="/group/education">
+        <div class="topic-link-container">
+          <div class="topic-link">
+            <img class="hover-on" src=images/group_icons/active/education.svg>
+            <img class="hover-off" src=images/group_icons/inactive/education.svg>
+            <h5 class="topic-title">Education</h5>
+          </div>
+        </div>
+        </a>
+      </div>
+
+      <div class="topic-container ">
+        <a class="ga-topic-selector" data-ga=Environment href="/group/environment">
+        <div class="topic-link-container">
+          <div class="topic-link">
+            <img class="hover-on" src=images/group_icons/active/environment.svg>
+            <img class="hover-off" src=images/group_icons/inactive/environment.svg>
+            <h5 class="topic-title">Environment</h5>
+          </div>
+        </div>
+        </a>
+      </div>
+
+      <div class="topic-container ">
+        <a class="ga-topic-selector" data-ga=Finance href="/group/finance">
+        <div class="topic-link-container">
+          <div class="topic-link">
+            <img class="hover-on" src=images/group_icons/active/finance.svg>
+            <img class="hover-off" src=images/group_icons/inactive/finance.svg>
+            <h5 class="topic-title">Finance</h5>
+          </div>
+        </div>
+        </a>
+      </div>
+
+      <div class="topic-container ">
+        <a class="ga-topic-selector" data-ga=Health href="/group/health">
+        <div class="topic-link-container">
+          <div class="topic-link">
+            <img class="hover-on" src=images/group_icons/active/health.svg>
+            <img class="hover-off" src=images/group_icons/inactive/health.svg>
+            <h5 class="topic-title">Santé</h5>
+          </div>
+        </div>
+        </a>
+      </div>
+
+      <div class="topic-container ">
+        <a class="ga-topic-selector" data-ga=Infrastructure href="/group/infrastructure">
+        <div class="topic-link-container">
+          <div class="topic-link">
+            <img class="hover-on" src=images/group_icons/active/infrastructure.svg>
+            <img class="hover-off" src=images/group_icons/inactive/infrastructure.svg>
+            <h5 class="topic-title">Infrastructure</h5>
+          </div>
+        </div>
+        </a>
+      </div>
+
+      <div class="topic-container ">
+        <a class="ga-topic-selector" data-ga=Society href="generation_graphes.html">
+        <div class="topic-link-container">
+          <div class="topic-link">
+            <img class="hover-on" src=images/group_icons/active/society.svg>
+            <img class="hover-off" src=images/group_icons/inactive/society.svg>
+            <h5 class="topic-title">Population</h5>
+          </div>
+        </div>
+        </a>
+      </div>
+
+      <div class="topic-container ">
+        <a class="ga-topic-selector" data-ga=Technology href="/group/technology">
+        <div class="topic-link-container">
+          <div class="topic-link">
+            <img class="hover-on" src=images/group_icons/active/technology.svg>
+            <img class="hover-off" src=images/group_icons/inactive/technology.svg>
+            <h5 class="topic-title">Technologie</h5>
+          </div>
+        </div>
+        </a>
+      </div>
+
+      <div class="topic-container ">
+        <a class="ga-topic-selector" data-ga=Transport href="/group/transport">
+        <div class="topic-link-container">
+          <div class="topic-link">
+            <img class="hover-on" src=images/group_icons/active/transport.svg>
+            <img class="hover-off" src=images/group_icons/inactive/transport.svg>
+            <h5 class="topic-title">Transport</h5>
+          </div>
+        </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<a href="/developer">
+  <section class="misc-section developer-portal ga-index-dev-portal-banner">
+    <div class="container">
+      <div class="misc-section-content">
+        <h2 class="section-title text-white">Portail OGD</h2>
+          <div class="misc-section-title text-white">Dévouvrez les données ouvertes sur notre portail OGD</div>
+      </div>
+    </div>
+  </section>
+</a>
+
+
+    </main>
+
+    <footer class="site-footer">
+      <div class='container'>
+
+        <div class="row">
+          <div class="col-xs-12 col-md-7 footer-groups">
+            <div class="attribution-group text-left">
+              <h2>Fait par</h2>
+              <br>
+                <a href="https://www.fr.ch/deef/sstat">Service de la statistique (SStat)</a><small class="text-muted"> - Une division de l'Etat de Fribourg.</small><br><br>
+              <div><small>Dernière mise à jour le 19 août <script>document.write(new Date().getFullYear())</script></small></div>
+              <small>&copy; 2022 Etat de Fribourg</small>
+            </div>
+          </div>
+          <div class="col-xs-12 col-md-3 footer-groups">
+            <h2>Liens Utiles</h2>
+              <div class="footer-link">
+                <a class="ga-footer-about" href="/about">A Propos</a>
+              </div>
+              <div class="footer-link">
+                <a class="ga-footer-privacy" href="/privacy-and-website-terms">Confidentialité et conditions d'utilisation du site Web</a>
+              </div>
+              <div class="footer-link">
+                <a class="ga-footer-odl" href="/open-data-licence">Open Data Licence</a>
+              </div>
+              <div class="footer-link">
+                <a class="ga-footer-developer-guide" href="/developer">Developers</a>
+              </div>
+            </div>
+          <div class="col-xs-12 col-md-2 footer-groups">
+            <h2>Trouvez Nous</h2>
+              <div class="footer-link">
+                <a class="ga-footer-email" href="mailto:feedback@data.gov.sg?Subject=[Data.gov.sg] Feedback">
+                <img class="footer-site-icon"
+                  src="images/email_white.png"
+                  title="Email"/>Email
+                </a>
+              </div>
+              <div class="footer-link">
+                <a class="ga-footer-facebook" href="https://www.facebook.com/opendatasg/">
+                  <img class="footer-site-icon"
+                  src="images/fb_white.svg"
+                  title="Facebook"/>Facebook
+                </a>
+              </div>
+              <div class="footer-link">
+                <a class="ga-footer-twitter" href="https://twitter.com/datagovsg">
+                  <img class="footer-site-icon"
+                  src="images/twitter_white.svg"
+                  title="Twitter"/>Twitter
+                </a>
+              </div>
+              <div class="footer-link">
+                <a class="ga-footer-medium" href="https://blog.data.gov.sg/">
+                <img class="footer-site-icon"
+                  src="images/medium_white.svg"
+                  title="Medium"/>Medium
+                </a>
+              </div>
+              <div class="footer-link">
+                <a class="ga-footer-github" href="https://github.com/datagovsg">
+                <img class="footer-site-icon"
+                  src="images/github_white.svg"
+                  title="Github"/>Github
+                </a>
+              </div>
+          </div>
+
+
+
+   <!--      <nav class="footer-links">
+
+        </nav>
+ -->
+
+      </div>
+    </footer>
+
+
+
+
+    <footer class="site-account text-right text-muted">
+      <div class="container">
+        <small>
+
+
+          <a href="/user/login">
+            Log In
+          </a>
+
+        </small>
+      </div>
+    </footer>
+
+
+
+
+
+  <script>document.getElementsByTagName('html')[0].className += ' js';</script>
+<script type="text/javascript" src="/fanstatic/vendor/:version:2020-12-29T10:24:02/jquery.min.js"></script>
+<script type="text/javascript" src="/fanstatic/vendor/:version:2020-12-29T10:24:02/:bundle:jed.min.js;moment-with-locales.js;select2/select2.min.js"></script>
+<script type="text/javascript" src="/fanstatic/base/:version:2020-12-29T10:24:02/:bundle:plugins/jquery.inherit.min.js;plugins/jquery.proxy-all.min.js;plugins/jquery.url-helpers.min.js;plugins/jquery.date-helpers.min.js;plugins/jquery.slug.min.js;plugins/jquery.slug-preview.min.js;plugins/jquery.truncator.min.js;plugins/jquery.masonry.min.js;plugins/jquery.form-warning.min.js;sandbox.min.js;module.min.js;pubsub.min.js;client.min.js;notify.min.js;i18n.min.js;main.min.js"></script>
+<script type="text/javascript" src="/fanstatic/datagovsg-lib/:version:2021-02-09T17:59:43/jquery/jquery.appear.js"></script>
+<script type="text/javascript" src="/fanstatic/datagovsg-lib/:version:2021-02-09T17:59:43/jquery/jquery.autocomplete.min.js"></script>
+<script type="text/javascript" src="/fanstatic/datagovsg-lib/:version:2021-02-09T17:59:43/bootstrap/bootstrap.js"></script>
+<script type="text/javascript" src="/fanstatic/datagovsg-resourceviews-lib/:version:2021-02-09T17:59:43/jquery/jquery.appear.js"></script>
+<script type="text/javascript" src="/fanstatic/datagovsg-resourceviews-lib/:version:2021-02-09T17:59:43/d3/d3.min.js"></script>
+<script type="text/javascript" src="/fanstatic/datagovsg-resourceviews-lib/:version:2021-02-09T17:59:43/plottable/plottable.min.js"></script>
+<script type="text/javascript" src="/fanstatic/datagovsg-resourceviews-lib/:version:2021-02-09T17:59:43/bootstrap/bootstrap.js"></script>
+<script type="text/javascript" src="/fanstatic/datagovsg-resourceviews-lib/:version:2021-02-09T17:59:43/datatables/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="/fanstatic/datagovsg-resourceviews-lib/:version:2021-02-09T17:59:43/datatables/js/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="/fanstatic/datagovsg-js/:version:2022-07-17T08:45:15.72/snippets/ga-events.min.js"></script>
+<script type="text/javascript" src="/fanstatic/datagovsg-js/:version:2022-07-17T08:45:15.72/snippets/search-box.min.js"></script>
+<script type="text/javascript" src="/fanstatic/datagovsg-resourceviews-js/:version:2021-02-09T18:05:58/snippets/infocard.js"></script></body>
+
+
+</html>
